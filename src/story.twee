@@ -1,0 +1,620 @@
+:: StoryTitle
+Celestia Chatbot
+
+:: StoryData
+{
+  "ifid": "9D98BB79-7C79-48A4-B7DC-EE9498FE1DB8",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "Start",
+  "zoom": 1.0
+}
+
+:: Startup [startup] {"position":"350,100","size":"150,100"}
+(set: $score to 0)
+
+:: Header [header] {"position":"350,250","size":"150,100"}
+|score>[(print: $score)]|home>[(link: "home")[(go-to: "Start")]]
+
+:: Start [home] {"position":"600,100","size":"150,100"}
+# Who do you want to befriend today?
+Pick one of the three:
+
+[[🛰️ Voyager 1 & 2->VQ0]]
+
+[[🤖 Opportunity->OQ0]]
+
+[[🌕 Apollo 15->AQ0]]
+
+:: VQ0 {"position":"100,300","size":"150,100"}
+|m>[Hello, my friend. We are Voyager 1 and Voyager 2. We've been traveling through the darkness for a very long time, and we're still sending tiny signals back to Earth.]
+|m>[Before we tell you our story...]
+|q>[What do you love most?]
+
+(link: "Space")[(set: $r to 1)(go-to: "VQ1")]
+
+(link: "Robots")[(set: $r to 2)(go-to: "VQ1")]
+
+(link: "Exploring")[(set: $r to 3)(go-to: "VQ1")]
+
+:: VQ1 {"position":"100,450","size":"150,100"}
+|m>[(if: $r is 1)[Wonderful! We're going to get along just fine.](else-if: $r is 2)[We're robots, my friend. That makes us family!](else:)[That's exactly our job! And nobody does it better.]]
+|m>[We're twins, and we launched in 1977, just weeks apart. But our names can be tricky...]
+|q>[Which one of us launched first?]
+
+[[Voyager 1->VH1a]]
+
+(link: "Voyager 2")[(set: $score to it + 1)(go-to: "VQ2")]
+
+[[Both at the same moment->VH1c]]
+
+:: VH1a [hint] {"position":"350,450","size":"150,100"}
+|m>[Close! Voyager 1 launched on September 5, 1977... but his brother beat him by 16 days!]
+
+[[Try again->VQ1]]
+
+:: VH1c [hint] {"position":"350,530","size":"150,100"}
+|m>[Nope! There were 16 days between us. Voyager 2 launched on August 20, and Voyager 1 on September 5, 1977.]
+
+[[Try again->VQ1]]
+
+:: VQ2 {"position":"100,600","size":"150,100"}
+|m>[Exactly! Voyager 2 launched on August 20, 1977, and Voyager 1 followed 16 days later. But Voyager 1 took a faster path, so he passed his brother on the way and took the lead.]
+|m>[💡 Fact: Voyager 1 got the 1 because it was going to reach Jupiter first, not because it launched first.]
+|m>[NASA sent us on a journey no one had ever made before.]
+|q>[What do you think our mission was?]
+
+[[Visit the Moon->VH2a]]
+
+(link: "Explore the giant planets")[(set: $score to it + 1)(go-to: "VQ3")]
+
+[[Look for Martians->VH2c]]
+
+:: VH2a [hint] {"position":"350,600","size":"150,100"}
+|m>[Nope, the Moon was for the Apollo astronauts. Our journey went much, much farther... farther than any dream.]
+
+[[Try again->VQ2]]
+
+:: VH2c [hint] {"position":"350,680","size":"150,100"}
+|m>[Mars has its own robots. We were headed for the giant planets, out at the edge of the solar system.]
+
+[[Try again->VQ2]]
+
+:: VQ3 {"position":"100,750","size":"150,100"}
+|m>[Right! Voyager 1 visited Jupiter and Saturn, and Voyager 2 kept going to Uranus and Neptune. Between the two of us, we saw worlds no one had ever seen up close.]
+|m>[💡 Fact: The giant planets were lined up in a rare way that happens only about once every 175 years, so the mission used each planet's gravity to swing the spacecraft on to the next one.]
+|m>[There's one thing we're really proud of...]
+|q>[Which one of us visited Uranus and Neptune?]
+
+[[Voyager 1->VH3a]]
+
+(link: "Voyager 2")[(set: $score to it + 1)(go-to: "VQ4")]
+
+[[Both->VH3c]]
+
+:: VH3a [hint] {"position":"350,750","size":"150,100"}
+|m>[Close! But Voyager 1 only visited Jupiter and Saturn, and then he kept on going.]
+
+[[Try again->VQ3]]
+
+:: VH3c [hint] {"position":"350,830","size":"150,100"}
+|m>[Nope, Voyager 2 all by himself. And that makes him a very special spacecraft in history.]
+
+[[Try again->VQ3]]
+
+:: VQ4 {"position":"100,900","size":"150,100"}
+|m>[Exactly! And to this day, Voyager 2 is the only spacecraft in history to have visited them. No other spacecraft has ever done it.]
+|m>[💡 Fact: Voyager 2 reached Uranus in 1986 and Neptune in 1989.]
+|m>[After we finished with the planets, we kept going until we reached the place where the Sun's bubble ends and the space between the stars begins.]
+|q>[What year do you think Voyager 1 entered it?]
+
+[[1990->VH4a]]
+
+(link: "2012")[(set: $score to it + 1)(go-to: "VQ5")]
+
+[[2030->VH4c]]
+
+:: VH4a [hint] {"position":"350,900","size":"150,100"}
+|m>[Too early. But something unforgettable happened in 1990: Voyager 1 turned its cameras around and photographed Earth from very far away. It looked like a tiny pale blue dot!]
+
+[[Try again->VQ4]]
+
+:: VH4c [hint] {"position":"350,980","size":"150,100"}
+|m>[That's still in the future! We left long ago: Voyager 1 in 2012 and Voyager 2 in 2018.]
+
+[[Try again->VQ4]]
+
+:: VQ5 {"position":"100,1050","size":"150,100"}
+|m>[Correct! Voyager 1 entered in 2012, and Voyager 2 followed in 2018. And so far, we're the only two who have ever made it there!]
+|m>[💡 Fact: Our instruments felt a big change in the particles around us, and that's how scientists confirmed we had crossed the border.]
+|q>[If you sent us a hello right now, how long do you think it would take to reach us?]
+
+[[Seconds->VH5a]]
+
+(link: "About 24 hours")[(set: $score to it + 1)(go-to: "VQ6")]
+
+[[A week->VH5c]]
+
+:: VH5a [hint] {"position":"350,1050","size":"150,100"}
+|m>[I wish! If that were true, we could talk right away!]
+
+[[Try again->VQ5]]
+
+:: VH5c [hint] {"position":"350,1130","size":"150,100"}
+|m>[Less than that! But it's still an incredible distance.]
+
+[[Try again->VQ5]]
+
+:: VQ6 {"position":"100,1200","size":"150,100"}
+|m>[Just about! Your message would travel a whole day through the dark, and then our reply would take another day. Just to say one sentence, we'd wait two days!]
+|m>[💡 Fact: On November 18, 2026, we'll be exactly one light-day away, about 25.9 billion kilometers. Nothing humans have ever built has gone that far before us.]
+|m>[And in all this darkness... our brain is tiny.]
+|q>[How big do you think our memory is?]
+
+[[Like a computer->VH6a]]
+
+(link: "Only 69 kilobytes")[(set: $score to it + 1)(go-to: "VQ7")]
+
+[[1 terabyte->VH6c]]
+
+:: VH6a [hint] {"position":"350,1200","size":"150,100"}
+|m>[A computer today? Even a smartwatch is more powerful than us!]
+
+[[Try again->VQ6]]
+
+:: VH6c [hint] {"position":"350,1280","size":"150,100"}
+|m>[If we had a terabyte, we'd be so relaxed! Our memory is only 69 kilobytes.]
+
+[[Try again->VQ6]]
+
+:: VQ7 {"position":"100,1350","size":"150,100"}
+|m>[Right! One photo on your phone is bigger than our whole memory, and still we reached the farthest place any human-made object has ever been.]
+|m>[💡 Fact: We run on a small nuclear power source, not solar panels, because the Sun is now far too far away.]
+|m>[Each of us carries a gift for any alien who might find us one day... it's called The Golden Record.]
+|q>[What do you think is on it?]
+
+(link: "Sounds of Earth")[(set: $r to 1)(go-to: "VQ8")]
+
+(link: "Greetings in different languages")[(set: $r to 2)(go-to: "VQ8")]
+
+(link: "Pictures and music")[(set: $r to 3)(go-to: "VQ8")]
+
+:: VQ8 {"position":"100,1500","size":"150,100"}
+|m>[(if: $r is 1)[Right! Rain, ocean waves, animals, the song of the whale... it's like we're carrying the whole Earth inside us.](else-if: $r is 2)[Correct! It has greetings in 55 languages, so whoever finds us will know we came in peace.](else:)[Right again! It has pictures of people and life on Earth, and music from all over the world.]]
+|m>[💡 Fact: The record's cover has a map of 14 pulsars that shows anyone who finds us where Earth is.]
+|m>[And in November 2023... something very hard happened. Voyager 1 got sick, and started sending 1s and 0s and 1s and 0s that meant nothing, as if he couldn't speak.]
+|q>[What do you think NASA did?]
+
+[[Shut him down and gave up->VH8a]]
+
+(link: "Fixed him from far away")[(set: $score to it + 1)(go-to: "VImg")]
+
+[[Sent a spacecraft to fix him->VH8c]]
+
+:: VH8a [hint] {"position":"350,1500","size":"150,100"}
+|m>[No, NASA doesn't give up that easily.]
+
+[[Try again->VQ8]]
+
+:: VH8c [hint] {"position":"350,1580","size":"150,100"}
+|m>[I wish! But no spacecraft can reach him, so they fixed him from afar.]
+
+[[Try again->VQ8]]
+
+:: VImg {"position":"100,1650","size":"150,100"}
+|m>[Correct! They split the code into tiny pieces and spread them across empty spots in his memory. He was about 24 billion kilometers away at the time, and by April 2024 he was working again. It's like a doctor performing surgery without being able to see the patient!]
+|m>[💡 Fact: The problem was a damaged memory chip, so instead of repairing it, the team moved the code to another place.]
+|q>[Imagination question: If you were the one who gave us our names, and you wanted names that express our long journey through space, what would you call us? And why?]
+
+[[I've got my answer! ✨->VEnd]]
+
+:: VEnd {"position":"100,1800","size":"150,100"}
+|big>[🏅]
+|m>[I hope you enjoyed the trip! As a reward for playing along, I'll share a couple of little secrets that very few people know. Keep them safe! 🤫]
+|m>[🤫 Secret 1: A Message That Takes a Whole Day!]
+|m>[On November 18, 2026, Voyager 1 is expected to reach a distance of one light-day from Earth.]
+|m>[That means a radio signal will need approximately 24 hours to travel from Earth to Voyager 1!]
+|m>[🤫 Secret 2: A Tiny Memory, An Incredible Journey!]
+|m>[Voyager's computer memory is approximately 69 kilobytes.]
+|m>[That's incredibly small compared with modern technology, yet these spacecraft have traveled billions of kilometers and explored worlds beyond our imagination!]
+|m>[Your score: $score out of 7]
+|q>[Want to try another character?]
+
+[[Back to characters->Start]]
+
+:: OQ0 {"position":"800,300","size":"150,100"}
+|m>[Hello, my friend. I'm Opportunity, a little robot on wheels. I lived on Mars for almost 15 years, all alone in a big red desert.]
+|m>[Before I tell you my story...]
+|q>[What do you love most?]
+
+(link: "Space")[(set: $r to 1)(go-to: "OQ1")]
+
+(link: "Robots")[(set: $r to 2)(go-to: "OQ1")]
+
+(link: "Exploring")[(set: $r to 3)(go-to: "OQ1")]
+
+:: OQ1 {"position":"800,450","size":"150,100"}
+|m>[(if: $r is 1)[Wonderful! Mars is like my second home, my friend.](else-if: $r is 2)[We're robots, my friend. That makes us family!](else:)[That's exactly my job! And I did it every single day.]]
+|m>[People call me a Rover.]
+|q>[What do you think that means?]
+
+[[A satellite orbiting Mars->OH1a]]
+
+(link: "A robot that moves on wheels")[(set: $score to it + 1)(go-to: "OQ2")]
+
+[[An astronaut in a spacesuit->OH1c]]
+
+:: OH1a [hint] {"position":"1050,450","size":"150,100"}
+|m>[Close! But a satellite circles high above. I landed on the red ground itself.]
+
+[[Try again->OQ1]]
+
+:: OH1c [hint] {"position":"1050,530","size":"150,100"}
+|m>[Nope, no humans on Mars yet. I went in their place.]
+
+[[Try again->OQ1]]
+
+:: OQ2 {"position":"800,600","size":"150,100"}
+|m>[Exactly! I'm a robot that drives around, with cameras and tools. And I wasn't just taking pictures, I was a whole science lab on wheels!]
+|m>[💡 Fact: I'm about the size of a golf cart, and I weigh around 185 kilograms.]
+|m>[I launched on July 7, 2003, and landed on Mars on January 24, 2004. NASA sent me to look for something very important...]
+|q>[What do you think it was?]
+
+[[Find Martians->OH2a]]
+
+(link: "Look for evidence that water existed")[(set: $score to it + 1)(go-to: "OQ3")]
+
+[[Bring rocks back to Earth->OH2c]]
+
+:: OH2a [hint] {"position":"1050,600","size":"150,100"}
+|m>[Nope, I never met anyone. But I found something even better.]
+
+[[Try again->OQ2]]
+
+:: OH2c [hint] {"position":"1050,680","size":"150,100"}
+|m>[I couldn't come back. I studied the rocks right there, with my own tools.]
+
+[[Try again->OQ2]]
+
+:: OQ3 {"position":"800,750","size":"150,100"}
+|m>[Right! I had to find out: was there flowing water on Mars long ago? Because water means life might have had a chance.]
+|m>[💡 Fact: I landed in a place called Meridiani Planum, because satellites had spotted a mineral there that usually forms where water is present.]
+|m>[I wasn't alone on this journey. I had a twin, but he landed in a different place on Mars.]
+|q>[What do you think his name is?]
+
+[[Voyager->OH3a]]
+
+(link: "Spirit")[(set: $score to it + 1)(go-to: "OQ4")]
+
+[[Curiosity->OH3c]]
+
+:: OH3a [hint] {"position":"1050,750","size":"150,100"}
+|m>[Nope, Voyager is a spacecraft that travels through space, not a rover on wheels.]
+
+[[Try again->OQ3]]
+
+:: OH3c [hint] {"position":"1050,830","size":"150,100"}
+|m>[Close! Curiosity is a Mars rover too, but he came years after us. My twin is Spirit.]
+
+[[Try again->OQ3]]
+
+:: OQ4 {"position":"800,900","size":"150,100"}
+|m>[Exactly! Spirit is my twin. They sent us together, and each of us went to a different place on Mars.]
+|m>[💡 Fact: Spirit got stuck in soft sand in 2009, and his mission ended in 2010. I kept going for many years after.]
+|q>[When they sent me, how many days did scientists think I would last on Mars?]
+
+(link: "90 days")[(set: $score to it + 1)(go-to: "OQ5")]
+
+[[One year->OH4b]]
+
+[[15 years->OH4c]]
+
+:: OH4b [hint] {"position":"1050,940","size":"150,100"}
+|m>[Less than that! They expected an even shorter mission.]
+
+[[Try again->OQ4]]
+
+:: OH4c [hint] {"position":"1050,980","size":"150,100"}
+|m>[That's what actually happened! But nobody expected it. I lasted more than 55 times longer than planned, close to 60 times!]
+
+[[Try again->OQ4]]
+
+:: OQ5 {"position":"800,1050","size":"150,100"}
+|m>[Right! They expected me to last only about 90 days. Mars is harsh: freezing cold and huge storms.]
+|m>[💡 Fact: A day on Mars is called a Sol, and it's a little longer than our day: about 24 hours and 40 minutes.]
+|m>[While I lived there, I drove a little bit every day.]
+|q>[How many kilometers do you think I traveled in the end?]
+
+[[One kilometer->OH5a]]
+
+(link: "45 kilometers")[(set: $score to it + 1)(go-to: "OQ6")]
+
+[[1,000 kilometers->OH5c]]
+
+:: OH5a [hint] {"position":"1050,1050","size":"150,100"}
+|m>[Much more than that!]
+
+[[Try again->OQ5]]
+
+:: OH5c [hint] {"position":"1050,1130","size":"150,100"}
+|m>[Nope, I drove slowly, because one mistake could have stopped me for good.]
+
+[[Try again->OQ5]]
+
+:: OQ6 {"position":"800,1200","size":"150,100"}
+|m>[Exactly! More than 45 kilometers on my little wheels, which is longer than a full marathon, on the surface of another planet!]
+|m>[As I drove, I visited huge impact craters, like Endurance Crater and Victoria Crater, and studied the rocks and soil.]
+|q>[What do you think I found?]
+
+(link: "Evidence of ancient flowing water")[(set: $score to it + 1)(go-to: "OQ7")]
+
+[[Aliens->OH6b]]
+
+[[An ancient city->OH6c]]
+
+:: OH6b [hint] {"position":"1050,1240","size":"150,100"}
+|m>[Nope, no one has found any yet. But I found evidence that this place once had water, and that was historic news.]
+
+[[Try again->OQ6]]
+
+:: OH6c [hint] {"position":"1050,1280","size":"150,100"}
+|m>[Nope, but I found rocks and soil that tell the story of the planet.]
+
+[[Try again->OQ6]]
+
+:: OQ7 {"position":"800,1350","size":"150,100"}
+|m>[Right! I found geological evidence that water once existed on Mars. Mars wasn't always a red desert.]
+|m>[💡 Fact: I found tiny round balls on the ground, like blueberries, made of a mineral that forms where water is present. Scientists called them Blueberries.]
+|m>[And in June 2018... something happened. A giant dust storm covered Mars, and it covered the place where I was. I got my energy from solar panels.]
+|q>[What do you think happened?]
+
+(link: "The dust blocked the sunlight from reaching me")[(set: $score to it + 1)(go-to: "OQ8")]
+
+[[The storm destroyed me->OH7b]]
+
+[[My battery ran out from working so much->OH7c]]
+
+:: OH7b [hint] {"position":"1050,1390","size":"150,100"}
+|m>[No, the storm didn't break me. The problem was that the dust blocked the sunlight.]
+
+[[Try again->OQ7]]
+
+:: OH7c [hint] {"position":"1050,1430","size":"150,100"}
+|m>[Close! But the real reason is that the dust was so thick it kept the Sun from reaching my panels.]
+
+[[Try again->OQ7]]
+
+:: OQ8 {"position":"800,1500","size":"150,100"}
+|m>[Sadly, yes. The sky went dark around me, and my panels couldn't charge.]
+|m>[💡 Fact: The last time anyone heard from me was on June 10, 2018.]
+|m>[After the storm, I stayed silent. I couldn't speak.]
+|q>[What do you think NASA did?]
+
+[[Forgot about me->OH8a]]
+
+(link: "Tried to reach me for many long months")[(set: $score to it + 1)(go-to: "OImg")]
+
+[[Sent another robot to clean my panels->OH8c]]
+
+:: OH8a [hint] {"position":"1050,1500","size":"150,100"}
+|m>[No, NASA doesn't forget so easily.]
+
+[[Try again->OQ8]]
+
+:: OH8c [hint] {"position":"1050,1580","size":"150,100"}
+|m>[I wish! But no one could go there at the time.]
+
+[[Try again->OQ8]]
+
+:: OImg {"position":"800,1650","size":"150,100"}
+|m>[Right. They called out to me again and again, and kept waiting for the storm to calm and for the wind to clean my panels. And on February 13, 2019, NASA officially announced that my mission was over, after almost 15 years on Mars.]
+|m>[💡 Fact: NASA sent me more than 1,000 commands to try to wake me up, before announcing the end.]
+|q>[Imagination question: If you discovered something on Mars that no one had ever discovered before, what would you name your discovery?]
+
+[[I've got my answer! ✨->OEnd]]
+
+:: OEnd {"position":"800,1800","size":"150,100"}
+|big>[🏅]
+|m>[I hope you enjoyed the trip! As a reward for playing along, I'll share a couple of little secrets that very few people know. Keep them safe! 🤫]
+|m>[🤫 Secret 1: The Little Robot That Never Gave Up!]
+|m>[Did you know? Opportunity was designed to work for only 90 Martian days, but it kept working for almost 15 years!]
+|m>[🤫 Secret 2: A Record-Breaking Journey!]
+|m>[Did you know? Opportunity traveled about 45.16 kilometers on Mars, setting a record for the longest distance driven by a rover on another planet at that time.]
+|m>[Your score: $score out of 8]
+|q>[Want to try another character?]
+
+[[Back to characters->Start]]
+
+:: AQ0 {"position":"1500,300","size":"150,100"}
+|m>[Hello, my friend. I'm Apollo 15. The astronauts left long ago and went back to Earth, but my instruments and I stayed here on the Moon, silent... but awake.]
+|m>[Before I tell you our story...]
+|q>[What do you love most?]
+
+(link: "Space")[(set: $r to 1)(go-to: "AQ1")]
+
+(link: "Robots and instruments")[(set: $r to 2)(go-to: "AQ1")]
+
+(link: "Exploring")[(set: $r to 3)(go-to: "AQ1")]
+
+:: AQ1 {"position":"1500,450","size":"150,100"}
+|m>[(if: $r is 1)[Wonderful! The Moon is our home, my friend.](else-if: $r is 2)[We're scientific instruments, my friend. That makes us family!](else:)[That's exactly our job! And our journey was one of the biggest ever.]]
+|m>[We launched from Earth on July 26, 1971, and rose into the darkness toward the Moon.]
+|q>[How many days do you think it took us to arrive?]
+
+[[One day->AH1a]]
+
+(link: "4 days")[(set: $score to it + 1)(go-to: "AQ2")]
+
+[[A whole month->AH1c]]
+
+:: AH1a [hint] {"position":"1750,450","size":"150,100"}
+|m>[Much longer than that! The Moon is far away, and the road to it is a journey.]
+
+[[Try again->AQ1]]
+
+:: AH1c [hint] {"position":"1750,530","size":"150,100"}
+|m>[Nope, much less than that! The trip took only 4 days.]
+
+[[Try again->AQ1]]
+
+:: AQ2 {"position":"1500,600","size":"150,100"}
+|m>[Exactly! We landed on the Moon on July 30, 1971, after 4 days of flying through space.]
+|m>[💡 Fact: The crew was three astronauts: David Scott and James Irwin walked on the Moon, while Alfred Worden stayed in orbit in the main spacecraft.]
+|m>[NASA sent us on a big scientific mission, and the astronauts walked on ground that no human had ever stepped on before.]
+|q>[What do you think the goal was?]
+
+(link: "Study the Moon's surface and collect rocks and soil")[(set: $score to it + 1)(go-to: "AQ3")]
+
+[[Build a city on the Moon->AH2b]]
+
+[[Meet the Moon's inhabitants->AH2c]]
+
+:: AH2b [hint] {"position":"1750,640","size":"150,100"}
+|m>[It's too early for that! We were only studying the Moon.]
+
+[[Try again->AQ2]]
+
+:: AH2c [hint] {"position":"1750,680","size":"150,100"}
+|m>[Nope! No one lives on the Moon. We were the ones who came to get to know it.]
+
+[[Try again->AQ2]]
+
+:: AQ3 {"position":"1500,750","size":"150,100"}
+|m>[Right! The astronauts studied the Moon and collected samples of its rocks and soil, to learn its history.]
+|m>[💡 Fact: They brought back about 77 kilograms of Moon rocks and soil, including a rock called the Genesis Rock, which is more than 4 billion years old.]
+|m>[There was something that made us different from the missions before us. We were the first of the J Missions.]
+|q>[What do you think that means?]
+
+(link: "Stay on the Moon longer and explore a bigger area")[(set: $score to it + 1)(go-to: "AQ4")]
+
+[[Go to the Moon without astronauts->AH3b]]
+
+[[Fly faster->AH3c]]
+
+:: AH3b [hint] {"position":"1750,790","size":"150,100"}
+|m>[Nope, we had astronauts on board. But the mission carried more equipment.]
+
+[[Try again->AQ3]]
+
+:: AH3c [hint] {"position":"1750,830","size":"150,100"}
+|m>[It's not about speed! The difference was the time we spent on the Moon.]
+
+[[Try again->AQ3]]
+
+:: AQ4 {"position":"1500,900","size":"150,100"}
+|m>[Exactly! We were designed so the astronauts could stay longer and explore more than on any mission before us.]
+|m>[💡 Fact: The astronauts spent about 3 days on the Moon's surface and made 3 trips outside.]
+|m>[The astronauts left a set of instruments here called ALSEP, so it would keep working even after they left.]
+|q>[What do you think it measured?]
+
+(link: "Moonquakes")[(set: $r to 1)(go-to: "AQ5")]
+
+(link: "The magnetic field")[(set: $r to 2)(go-to: "AQ5")]
+
+(link: "The solar wind")[(set: $r to 3)(go-to: "AQ5")]
+
+:: AQ5 {"position":"1500,1050","size":"150,100"}
+|m>[(if: $r is 1)[Right! It had a Seismometer that feels the Moon's vibrations and quakes... like it's listening to the Moon's heartbeat.](else-if: $r is 2)[Right again! It had a Magnetometer that studies the Moon's magnetic field.](else:)[Correct! It had a Solar Wind Spectrometer that studies the wind coming from the Sun.]]
+|m>[💡 Fact: It ran on a small nuclear power source to get through the Moon's long, cold nights, and one Moon night lasts about two weeks!]
+|m>[And something strange stayed here too... a car! A car on the surface of the Moon!]
+|q>[What do you think it runs on?]
+
+[[Gasoline->AH5a]]
+
+(link: "Electric batteries")[(set: $score to it + 1)(go-to: "AQ6")]
+
+[[A sail that pushes it->AH5c]]
+
+:: AH5a [hint] {"position":"1750,1050","size":"150,100"}
+|m>[Nope, there's no gasoline on the Moon!]
+
+[[Try again->AQ5]]
+
+:: AH5c [hint] {"position":"1750,1130","size":"150,100"}
+|m>[Nope, there's no wind on the Moon!]
+
+[[Try again->AQ5]]
+
+:: AQ6 {"position":"1500,1200","size":"150,100"}
+|m>[Exactly! That was the Lunar Roving Vehicle, the first electric car humans ever used on the Moon's surface, and it helped the astronauts reach places much farther away.]
+|m>[That car carried the astronauts to faraway places on the Moon.]
+|q>[How far do you think it traveled with the Apollo 15 astronauts?]
+
+[[One kilometer->AH6a]]
+
+(link: "About 17 miles")[(set: $score to it + 1)(go-to: "AQ7")]
+
+[[1,000 kilometers->AH6c]]
+
+:: AH6a [hint] {"position":"1750,1200","size":"150,100"}
+|m>[Much more than that!]
+
+[[Try again->AQ6]]
+
+:: AH6c [hint] {"position":"1750,1280","size":"150,100"}
+|m>[Its batteries couldn't handle that!]
+
+[[Try again->AQ6]]
+
+:: AQ7 {"position":"1500,1350","size":"150,100"}
+|m>[Right! About 17 miles, which is close to 28 kilometers on the Moon's surface! And after the mission, the astronauts left it here... all alone.]
+|m>[💡 Fact: The car carried a TV camera controlled from Earth, and it filmed the moment the astronauts lifted off from the Moon.]
+|m>[The astronauts landed on the Moon in a vehicle called Falcon.]
+|q>[What do you think happened to it after the astronauts returned to the main spacecraft?]
+
+[[All of it stayed intact on the Moon->AH7a]]
+
+(link: "The upper part separated and crashed into the Moon")[(set: $score to it + 1)(go-to: "AQ8")]
+
+[[It came back to Earth with them->AH7c]]
+
+:: AH7a [hint] {"position":"1750,1350","size":"150,100"}
+|m>[Nope, not all of it! There's an important detail.]
+
+[[Try again->AQ7]]
+
+:: AH7c [hint] {"position":"1750,1430","size":"150,100"}
+|m>[Nope, Falcon didn't come back. Part of it stayed on the Moon.]
+
+[[Try again->AQ7]]
+
+:: AQ8 {"position":"1500,1500","size":"150,100"}
+|m>[Exactly! The astronauts flew up in the upper part and returned to the main spacecraft, and then that part separated and crashed into the Moon's surface. But the lower part of Falcon is still on the Moon.]
+|m>[💡 Fact: That crash was on purpose, and the seismometer left on the Moon felt the shaking!]
+|m>[The astronauts went back to Earth... and we stayed here.]
+|q>[Why do you think they left us?]
+
+[[To get rid of us->AH8a]]
+
+(link: "So we could keep collecting scientific data after they left")[(set: $score to it + 1)(go-to: "AImg")]
+
+[[Because we were too heavy->AH8c]]
+
+:: AH8a [hint] {"position":"1750,1500","size":"150,100"}
+|m>[No! That wasn't the reason.]
+
+[[Try again->AQ8]]
+
+:: AH8c [hint] {"position":"1750,1580","size":"150,100"}
+|m>[Close! But the most important reason is that we were still useful to science.]
+
+[[Try again->AQ8]]
+
+:: AImg {"position":"1500,1650","size":"150,100"}
+|m>[Right! The instruments were designed to stay on the Moon and send information to Earth for years, without anyone having to bring them back.]
+|m>[💡 Fact: We kept sending data for about 6 years, until NASA shut down the experiment network in 1977.]
+|q>[Imagination question: If you could choose the name of the Moon car you'd use to explore the lunar surface, what would you call it?]
+
+[[I've got my answer! ✨->AEnd]]
+
+:: AEnd {"position":"1500,1800","size":"150,100"}
+|big>[🏅]
+|m>[I hope you enjoyed the trip! As a reward for playing along, I'll share a couple of little secrets that very few people know. Keep them safe! 🤫]
+|m>[🤫 Secret 1: The First Moon Car!]
+|m>[Did you know? Apollo 15 was the first mission to use a Lunar Roving Vehicle on the Moon! It was an electric vehicle powered by batteries.]
+|m>[🤫 Secret 2: A Long Stay on the Moon!]
+|m>[Did you know? Apollo 15 astronauts stayed on the lunar surface for about 66 hours and 55 minutes, making it a much longer exploration than earlier Apollo landing missions.]
+|m>[Your score: $score out of 7]
+|q>[Want to try another character?]
+
+[[Back to characters->Start]]

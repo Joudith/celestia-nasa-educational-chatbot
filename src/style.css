@@ -1,0 +1,92 @@
+html,body{height:100%;margin:0;overflow:hidden;background:#161c33}
+tw-story{position:fixed!important;left:-10000px;top:0;width:480px;height:10px;overflow:hidden;opacity:0;pointer-events:none}
+#cz{--bg1:#1f2742;--bg2:#161c33;--text:#eef1f8;--bot:#f3d9c4;--bot-text:#4a3326;--me:#8b95c9;--card:rgba(255,255,255,.08);position:fixed;inset:0;z-index:5;display:flex;justify-content:center;font-family:'Cairo',Tahoma,sans-serif;color:var(--text);background:linear-gradient(180deg,var(--bg1),var(--bg2));direction:rtl;text-align:start}
+#cz *{box-sizing:border-box;margin:0}
+#cz .star{position:absolute;background:#dfe6ff;border-radius:50%;animation:czTw 5s infinite ease-in-out;opacity:.5}
+@keyframes czTw{50%{opacity:.1}}
+#cz .planet{position:absolute;font-size:40px;opacity:.55;animation:czFl 8s infinite ease-in-out}
+@keyframes czFl{50%{transform:translateY(-10px)}}
+#cz .cz-app{position:relative;z-index:2;width:100%;max-width:640px;height:100%;display:flex;flex-direction:column;padding:12px}
+#cz .cz-head{display:flex;align-items:center;gap:10px;background:var(--card);border-radius:20px;padding:10px 12px;border:1px solid rgba(255,255,255,.12)}
+#cz .cz-av{flex:none;width:50px;height:50px;border-radius:50%;background:var(--bot);display:grid;place-items:center;font-size:28px;overflow:hidden;transition:box-shadow .3s}
+#cz .cz-av img{width:100%;height:100%;object-fit:cover;display:block}
+#cz .cz-av.talk{box-shadow:0 0 0 5px rgba(243,217,196,.35);animation:czPulse 1s infinite}
+@keyframes czPulse{50%{box-shadow:0 0 0 9px rgba(243,217,196,.12)}}
+#cz .cz-t{min-width:0}
+#cz .cz-t h1{font-size:17px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#cz .cz-t small{opacity:.7;font-size:12px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#cz .cz-tools{margin-inline-start:auto;display:flex;gap:6px;align-items:center;flex:none}
+#cz .cz-ic{font-family:inherit;border:none;background:#ffffff1a;color:#fff;border-radius:14px;font-size:17px;padding:6px 9px;cursor:pointer}
+#cz .cz-ic:hover{background:#ffffff30}
+#cz .cz-score{font-size:15px;font-weight:700;background:#ffffff14;padding:5px 9px;border-radius:16px;white-space:nowrap}
+#czChat{flex:1;overflow-y:auto;padding:14px 4px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
+#cz .msg{max-width:86%;padding:11px 16px;border-radius:20px;font-size:18px;line-height:1.75;animation:czPop .4s ease}
+@keyframes czPop{from{transform:translateY(10px);opacity:0}}
+#cz .bot{background:var(--bot);color:var(--bot-text);font-weight:700;border-bottom-right-radius:4px;align-self:flex-start}
+#cz .me{background:var(--me);color:#fff;align-self:flex-end;border-bottom-left-radius:4px;font-weight:700}
+#cz .typing{display:flex;gap:5px;padding:14px 18px}
+#cz .typing i{width:8px;height:8px;border-radius:50%;background:var(--bot-text);opacity:.6;animation:czBn 1s infinite}
+#cz .typing i:nth-child(2){animation-delay:.15s}#cz .typing i:nth-child(3){animation-delay:.3s}
+@keyframes czBn{50%{transform:translateY(-6px)}}
+#czChoices{display:flex;flex-direction:column;gap:10px;padding:10px 0 6px;min-height:20px}
+#cz .btn{font-family:inherit;font-size:18px;font-weight:700;border:none;border-radius:16px;padding:13px 16px;cursor:pointer;color:#26304f;background:#a9c8e8;box-shadow:0 4px 0 rgba(0,0,0,.22);transition:transform .1s;animation:czPop .4s ease backwards}
+#cz .btn:nth-child(2){background:#d9b8d9}#cz .btn:nth-child(3){background:#b5d8c0}
+#cz .btn:hover{transform:translateY(-2px)}
+#cz .btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.22)}
+#cz .big{font-size:56px;text-align:center;align-self:center;animation:czPop .6s}
+#cz .cz-home{position:absolute;inset:0;z-index:10;background:linear-gradient(180deg,var(--bg1),var(--bg2));display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:28px 18px;overflow-y:auto}
+#cz .cz-home.hide{display:none}
+#cz .cz-home>:first-child{margin-top:auto}#cz .cz-home>:last-child{margin-bottom:auto}
+#cz .cz-logo{font-size:64px;color:var(--bot);animation:czFl 4s infinite}
+#cz .cz-home h2{font-size:26px;font-weight:900}
+#cz .cz-home p{opacity:.8;font-size:16px;max-width:380px;line-height:1.8}
+#cz .cz-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;max-width:440px}
+#cz .cz-card{font-family:inherit;color:var(--text);display:flex;flex-direction:column;align-items:center;gap:8px;padding:8px 8px 12px;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:var(--card);cursor:pointer;transition:transform .2s,border-color .2s}
+#cz .cz-card:hover{transform:translateY(-4px);border-color:var(--bot)}
+#cz .cz-card:active{transform:scale(.97)}
+#cz .cz-card img,#cz .cz-card b{width:100%;aspect-ratio:1/1;border-radius:12px;object-fit:cover;display:grid;place-items:center;font-size:40px;background:#16161a}
+#cz .cz-card span{font-size:14px;font-weight:700;line-height:1.4}
+#czNote{font-size:13px;opacity:.6;max-width:340px}
+
+.arabic-voice-button {
+  display: block;
+  margin: 0 0 25px auto;
+  padding: 12px 18px;
+  border: 1px solid #7fd1ff;
+  border-radius: 22px;
+  background: #315d91;
+  color: white;
+  font-family: Arial, Tahoma, sans-serif;
+  font-size: 0.9em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ===== v2: خلفية الفضاء + شريط التقدم + معرض الصور ===== */
+#cz{background:linear-gradient(180deg,rgba(22,28,51,.30),rgba(22,28,51,.70)),url("assets/images/space-bg.jpg") center/cover no-repeat,#161c33}
+#cz .cz-home{background:linear-gradient(180deg,rgba(22,28,51,.50),rgba(22,28,51,.86))}
+#cz .cz-head{flex-wrap:wrap;background:rgba(14,19,40,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+#cz .cz-t{flex:1;min-width:110px}
+#cz .cz-card{background:rgba(14,19,40,.55)}
+#cz .cz-ph{font-size:14px;font-weight:700;white-space:nowrap}
+#cz .cz-ic.off{opacity:.4;text-decoration:line-through}
+#cz .cz-prog{flex:0 0 100%;display:flex;flex-direction:column;gap:5px;margin-top:2px}
+#cz .cz-bar{--n:6;height:10px;border-radius:99px;background:rgba(255,255,255,.14);overflow:hidden;position:relative}
+#cz .cz-bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#7fd1ff,#c9a7ff,#ffd28a,#7fd1ff);background-size:200% 100%;animation:czSh 3s linear infinite;transition:width .9s cubic-bezier(.4,1.4,.5,1);box-shadow:0 0 10px rgba(127,209,255,.7)}
+#cz .cz-bar::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(100% / var(--n) - 2px),rgba(14,19,40,.9) calc(100% / var(--n) - 2px),rgba(14,19,40,.9) calc(100% / var(--n)))}
+@keyframes czSh{to{background-position:-200% 0}}
+#cz .cz-prog small{font-size:12px;opacity:.9;text-align:center;font-weight:700}
+#cz .cz-prog.done .cz-bar i{animation-duration:1s}
+#cz .cz-photos-home{font-family:inherit;font-size:15px;font-weight:700;color:var(--text);background:var(--card);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:9px 18px;cursor:pointer}
+#cz .cz-photos-home:hover{border-color:var(--bot)}
+#cz .cz-gal{position:absolute;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;gap:14px;background:rgba(10,14,32,.93);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);overflow-y:auto;padding:14px 14px 30px}
+#cz .cz-gal.hide{display:none}
+#cz .cz-gal-bar{position:sticky;top:0;z-index:2;width:100%;max-width:560px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:rgba(14,19,40,.85);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:8px 14px}
+#cz .cz-gal-bar h2{font-size:19px;font-weight:900}
+#cz .cz-gcard{width:100%;max-width:560px;background:var(--card);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:12px;display:flex;flex-direction:column;gap:10px}
+#cz .cz-gcard img{width:100%;border-radius:14px;display:block;background:#0b0e1c}
+#cz .cz-gcard h3{font-size:18px;font-weight:900}
+#cz .cz-gcard p{font-size:15px;line-height:1.85;opacity:.92}
+#cz .cz-dl{align-self:flex-start;font-family:inherit;font-size:15px;font-weight:700;text-decoration:none;color:#26304f;background:#a9c8e8;border-radius:14px;padding:9px 16px;box-shadow:0 3px 0 rgba(0,0,0,.22)}
+#cz .cz-dl:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(0,0,0,.22)}
+#cz .msg,#cz .btn,#cz .cz-t,#cz .cz-home p,#cz .cz-home h2,#cz .cz-card span,#cz #czNote,#cz .cz-prog small,#cz .cz-ph,#cz .cz-photos-home,#cz .cz-gal-bar h2,#cz .cz-gcard h3,#cz .cz-gcard p,#cz .cz-dl{direction:ltr}
